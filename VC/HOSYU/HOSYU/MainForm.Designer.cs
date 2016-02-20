@@ -123,11 +123,6 @@
             this.tabTemplate = new System.Windows.Forms.TabPage();
             this.btnLoadTmp = new System.Windows.Forms.Button();
             this.btnSaveTmp = new System.Windows.Forms.Button();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.labelTextControl14 = new HOSYU.LabelTextControl();
             this.labelTextControl13 = new HOSYU.LabelTextControl();
             this.labelTextControl12 = new HOSYU.LabelTextControl();
@@ -142,6 +137,11 @@
             this.labelTextControl3 = new HOSYU.LabelTextControl();
             this.labelTextControl2 = new HOSYU.LabelTextControl();
             this.labelTextControl1 = new HOSYU.LabelTextControl();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlFill.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabAccept.SuspendLayout();
@@ -480,7 +480,7 @@
             this.tabControl2.Multiline = true;
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(927, 590);
+            this.tabControl2.Size = new System.Drawing.Size(927, 580);
             this.tabControl2.TabIndex = 0;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
@@ -504,7 +504,7 @@
             this.tabProcInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabProcInfo.Name = "tabProcInfo";
             this.tabProcInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabProcInfo.Size = new System.Drawing.Size(919, 554);
+            this.tabProcInfo.Size = new System.Drawing.Size(919, 544);
             this.tabProcInfo.TabIndex = 0;
             this.tabProcInfo.Text = "経過報告";
             // 
@@ -679,7 +679,7 @@
             this.tabPdfInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPdfInfo.Name = "tabPdfInfo";
             this.tabPdfInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPdfInfo.Size = new System.Drawing.Size(919, 554);
+            this.tabPdfInfo.Size = new System.Drawing.Size(919, 544);
             this.tabPdfInfo.TabIndex = 1;
             this.tabPdfInfo.Text = "PDF文書";
             // 
@@ -1309,49 +1309,6 @@
             this.btnSaveTmp.UseVisualStyleBackColor = true;
             this.btnSaveTmp.Click += new System.EventHandler(this.btnSaveTmp_Click);
             // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.pnlTop.Controls.Add(this.dateTimePicker1);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(944, 66);
-            this.pnlTop.TabIndex = 0;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePicker1.CustomFormat = "★  yyyy年 MM月 dd日  ★";
-            this.dateTimePicker1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(359, 11);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(226, 30);
-            this.dateTimePicker1.TabIndex = 0;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 705);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(944, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
-            // 
-            // toolTip
-            // 
-            this.toolTip.IsBalloon = true;
-            // 
             // labelTextControl14
             // 
             this.labelTextControl14.AutoSize = true;
@@ -1482,6 +1439,49 @@
             this.labelTextControl1.TabIndex = 0;
             this.labelTextControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
             // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.pnlTop.Controls.Add(this.dateTimePicker1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(944, 66);
+            this.pnlTop.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePicker1.CustomFormat = "★  yyyy年 MM月 dd日  ★";
+            this.dateTimePicker1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(359, 11);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(226, 30);
+            this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 705);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(944, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolTip
+            // 
+            this.toolTip.IsBalloon = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -1491,7 +1491,6 @@
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlFill);
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MaximumSize = new System.Drawing.Size(960, 765);
             this.MinimumSize = new System.Drawing.Size(800, 400);

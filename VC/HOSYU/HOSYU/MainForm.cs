@@ -1,4 +1,7 @@
-﻿using System;
+﻿/***************************************************************************
+*                Producted by Toshiya Yamanaka 2016
+****************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -62,6 +65,7 @@ namespace HOSYU
         *******************************************************/
         private void InitForm1Data()
         {
+            this.Icon = Properties.Resources.hosyu;
             objTmp = new TemplateText();
             lstLblKeys = Properties.Resources.LblKeys.Split('|');
             lstDomIDs = Properties.Resources.resDomID.Split('|');
@@ -1077,6 +1081,7 @@ namespace HOSYU
             using (ConInfoForm cif = new ConInfoForm())
             {
                 objTmp.DatabaseInfo.DataSourceString = txtAccessDbf.Text;
+                cif.Icon = Properties.Resources.hosyu;
                 cif.Caller = this;
                 cif.InfoMessage = objTmp.DatabaseInfo.DBConnectionString;
                 cif.ShowDialog();
