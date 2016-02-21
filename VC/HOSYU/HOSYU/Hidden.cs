@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.Data.Common;
 using System.Collections;
 
+/********************************************************************************************
+        未使用
+*********************************************************************************************/
+
 namespace HOSYU
 {
     public partial class Hidden : Form

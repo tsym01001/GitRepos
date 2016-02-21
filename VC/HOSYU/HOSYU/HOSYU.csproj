@@ -87,12 +87,13 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hidden.cs">
+    <None Include="check.rar" />
+    <None Include="Hidden.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Hidden.Designer.cs">
+    </None>
+    <None Include="Hidden.Designer.cs">
       <DependentUpon>Hidden.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,9 +114,9 @@
     <Compile Include="ConnectionInfo.Designer.cs">
       <DependentUpon>ConnectionInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Hidden.resx">
+    <None Include="Hidden.resx">
       <DependentUpon>Hidden.cs</DependentUpon>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,7 +170,11 @@
   <ItemGroup>
     <None Include="Resources\hosyu.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\KenkeiHosyu.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

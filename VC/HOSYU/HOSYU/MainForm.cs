@@ -65,6 +65,18 @@ namespace HOSYU
         *******************************************************/
         private void InitForm1Data()
         {
+            //　Accessをリソースとして取り込んでおき、デフォルトでは最初にこのデータベースを
+            //　実行ファイルディレクトリ配下に取り出し読み込む。
+            if (File.Exists(Properties.Resources.Defaultdb) == false)
+            {
+                using (FileStream fs = new FileStream(Properties.Resources.Defaultdb, FileMode.Create))
+                {
+                    using (BinaryWriter bw = new BinaryWriter(fs))
+                    {
+                        fs.Write(Properties.Resources.KenkeiHosyu, 0, Properties.Resources.KenkeiHosyu.Length);
+                    }
+                }
+            }
             this.Icon = Properties.Resources.hosyu;
             objTmp = new TemplateText();
             lstLblKeys = Properties.Resources.LblKeys.Split('|');
@@ -242,19 +254,22 @@ namespace HOSYU
                 {
                     case 0://受付入力---初期対応
                     case 1://報告書入力 ---1　経過報告　2 PDF完了入力
-                    case 2://データベースメンテナンス
                         ModTextValueChangeTab1();
                         toolStripStatusLabel1.Text = string.Empty;
                         break;
-                    case 3://設定データ(クリップボード)
-                        tabConfig.Focus();
+                    case 2://設定データ(クリップボード)
                         txtOutData.Focus();
                         txtOutData.Select(0, 0);
                         break;
-                    case 4://テンプレート設定
+                    case 3://テンプレート設定
                         lblTxtCtrls[0].TextControl.Focus();
-                        if(lblTxtCtrls[0].TextControl.Enabled)
+                        if (lblTxtCtrls[0].TextControl.Enabled)
                             lblTxtCtrls[0].TextControl.Select(0, 0);
+                        toolStripStatusLabel1.Text = string.Empty;
+                        break;
+                    case 4://データベースメンテナンス
+                        ModTextValueChangeTab1();
+                        toolStripStatusLabel1.Text = string.Empty;
                         break;
                     default:
                         break;
@@ -359,7 +374,7 @@ namespace HOSYU
                         }
                     }
                     break;
-                case 2://Databaseメンテナンス
+                case 4://Databaseメンテナンス
                     modAcceptDateTime = dateTimePicker1.Value;
                     if (txtFilterDate.Enabled)
                     {
@@ -1025,10 +1040,16 @@ namespace HOSYU
         private void btnQuery_Click(object sender, EventArgs e)
         {
             bCalledFlag = false;
-            if ( DbCheckBoxCheck())
+            if ( DbCheckBoxCheck() )
             {
                 DbItemCheckAndListBuffer();
-                SelectByFilter();
+                if (dbFields.Count == 0)
+                {
+                    SelectNoFilter();
+                }
+                else {
+                    SelectByFilter();
+                }
             }
             else
             {
@@ -1041,8 +1062,12 @@ namespace HOSYU
         *******************************************************/
         private void SelectByFilter()
         {
-            /*
-            */
+            DataTable refTeble;
+            string sqlparams = string.Join(",", dbFields.ToArray());
+//            string strSql = string.Format("select {0} from ")
+
+            
+            tabControl1.TabPages.Add("[ 検索結果 ]");
 
         }
 
@@ -1124,7 +1149,7 @@ namespace HOSYU
         public AccessDB()
         {
             propProvider = "Microsoft.ACE.OLEDB.12.0";
-            propDateDource = @".\default.accdb";
+            propDateDource = Properties.Resources.Defaultdb;
             propConnString = string.Format("Provider = {0};Data Source = {1}", propProvider, propDateDource);
             DbOpen();
         }
@@ -1354,7 +1379,7 @@ namespace HOSYU
                 propDataSourceString = propDataSourceString.Trim();
                 if (propDataSourceString == string.Empty)
                 {
-                    propDataSourceString = @".\default.accdb";
+                    propDataSourceString = Properties.Resources.Defaultdb;
                 }
             }
         }

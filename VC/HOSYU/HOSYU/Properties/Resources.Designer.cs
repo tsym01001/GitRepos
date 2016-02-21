@@ -70,12 +70,31 @@ namespace HOSYU.Properties {
         }
         
         /// <summary>
+        ///   .\default.accdb に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Defaultdb {
+            get {
+                return ResourceManager.GetString("Defaultdb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Icon hosyu {
             get {
                 object obj = ResourceManager.GetObject("hosyu", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] KenkeiHosyu {
+            get {
+                object obj = ResourceManager.GetObject("KenkeiHosyu", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -94,16 +113,6 @@ namespace HOSYU.Properties {
         internal static string resDomID {
             get {
                 return ResourceManager.GetString("resDomID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   SELECT ACCEPTTABLE.ACCEPTID, POLICETABLE.AREADATA, POLICETABLE.POSTDATA, ACCEPTTABLE.ACCEPTDAYTIME, ACCEPTTABLE.SYSNAME, ACCEPTTABLE.SYMPTOM
-        ///FROM ACCEPTTABLE LEFT JOIN POLICETABLE ON (ACCEPTTABLE.POSTID = POLICETABLE.POSTID) AND (ACCEPTTABLE.AREAID = POLICETABLE.AREAID); に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string SqlAccept {
-            get {
-                return ResourceManager.GetString("SqlAccept", resourceCulture);
             }
         }
     }

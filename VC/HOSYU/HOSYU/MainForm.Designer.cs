@@ -33,10 +33,6 @@
             this.pnlFill = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabAccept = new System.Windows.Forms.TabPage();
-            this.btnDownloadPost = new System.Windows.Forms.Button();
-            this.btnUploadPost = new System.Windows.Forms.Button();
-            this.btnDownloadArea = new System.Windows.Forms.Button();
-            this.btnUploadArea = new System.Windows.Forms.Button();
             this.txtReceptNum2 = new System.Windows.Forms.DomainUpDown();
             this.btnAccept = new System.Windows.Forms.Button();
             this.txtSymptom = new System.Windows.Forms.TextBox();
@@ -93,26 +89,6 @@
             this.lblCAUSEPDF = new System.Windows.Forms.Label();
             this.lblCHARGER = new System.Windows.Forms.Label();
             this.lblDAYPDF = new System.Windows.Forms.Label();
-            this.tabDataBase = new System.Windows.Forms.TabPage();
-            this.domainFilterID = new System.Windows.Forms.DomainUpDown();
-            this.chkDomID = new System.Windows.Forms.CheckBox();
-            this.chkFlgComp = new System.Windows.Forms.CheckBox();
-            this.txtFilterInputs = new System.Windows.Forms.TextBox();
-            this.chkInputs = new System.Windows.Forms.CheckBox();
-            this.chkCharger = new System.Windows.Forms.CheckBox();
-            this.txtFilterCharger = new System.Windows.Forms.TextBox();
-            this.chkSymptom = new System.Windows.Forms.CheckBox();
-            this.txtFilterSymptom = new System.Windows.Forms.TextBox();
-            this.chkSysname = new System.Windows.Forms.CheckBox();
-            this.txtFilterSysname = new System.Windows.Forms.TextBox();
-            this.txtFilterPost = new System.Windows.Forms.TextBox();
-            this.chkPost = new System.Windows.Forms.CheckBox();
-            this.chkArea = new System.Windows.Forms.CheckBox();
-            this.txtFilterArea = new System.Windows.Forms.TextBox();
-            this.chkDate = new System.Windows.Forms.CheckBox();
-            this.txtFilterDate = new System.Windows.Forms.TextBox();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
             this.tabConfig = new System.Windows.Forms.TabPage();
             this.btnBrowseAccess = new System.Windows.Forms.Button();
             this.txtAccessDbf = new System.Windows.Forms.TextBox();
@@ -137,6 +113,26 @@
             this.labelTextControl3 = new HOSYU.LabelTextControl();
             this.labelTextControl2 = new HOSYU.LabelTextControl();
             this.labelTextControl1 = new HOSYU.LabelTextControl();
+            this.tabDataBase = new System.Windows.Forms.TabPage();
+            this.domainFilterID = new System.Windows.Forms.DomainUpDown();
+            this.chkDomID = new System.Windows.Forms.CheckBox();
+            this.chkFlgComp = new System.Windows.Forms.CheckBox();
+            this.txtFilterInputs = new System.Windows.Forms.TextBox();
+            this.chkInputs = new System.Windows.Forms.CheckBox();
+            this.chkCharger = new System.Windows.Forms.CheckBox();
+            this.txtFilterCharger = new System.Windows.Forms.TextBox();
+            this.chkSymptom = new System.Windows.Forms.CheckBox();
+            this.txtFilterSymptom = new System.Windows.Forms.TextBox();
+            this.chkSysname = new System.Windows.Forms.CheckBox();
+            this.txtFilterSysname = new System.Windows.Forms.TextBox();
+            this.txtFilterPost = new System.Windows.Forms.TextBox();
+            this.chkPost = new System.Windows.Forms.CheckBox();
+            this.chkArea = new System.Windows.Forms.CheckBox();
+            this.txtFilterArea = new System.Windows.Forms.TextBox();
+            this.chkDate = new System.Windows.Forms.CheckBox();
+            this.txtFilterDate = new System.Windows.Forms.TextBox();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -150,9 +146,9 @@
             this.tabControl2.SuspendLayout();
             this.tabProcInfo.SuspendLayout();
             this.tabPdfInfo.SuspendLayout();
-            this.tabDataBase.SuspendLayout();
             this.tabConfig.SuspendLayout();
             this.tabTemplate.SuspendLayout();
+            this.tabDataBase.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -178,9 +174,9 @@
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabAccept);
             this.tabControl1.Controls.Add(this.tabInput);
-            this.tabControl1.Controls.Add(this.tabDataBase);
             this.tabControl1.Controls.Add(this.tabConfig);
             this.tabControl1.Controls.Add(this.tabTemplate);
+            this.tabControl1.Controls.Add(this.tabDataBase);
             this.tabControl1.Location = new System.Drawing.Point(3, 74);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Multiline = true;
@@ -193,10 +189,6 @@
             // tabAccept
             // 
             this.tabAccept.BackColor = System.Drawing.Color.Lavender;
-            this.tabAccept.Controls.Add(this.btnDownloadPost);
-            this.tabAccept.Controls.Add(this.btnUploadPost);
-            this.tabAccept.Controls.Add(this.btnDownloadArea);
-            this.tabAccept.Controls.Add(this.btnUploadArea);
             this.tabAccept.Controls.Add(this.txtReceptNum2);
             this.tabAccept.Controls.Add(this.btnAccept);
             this.tabAccept.Controls.Add(this.txtSymptom);
@@ -219,50 +211,6 @@
             this.tabAccept.Size = new System.Drawing.Size(933, 588);
             this.tabAccept.TabIndex = 0;
             this.tabAccept.Text = "受付入力処理";
-            // 
-            // btnDownloadPost
-            // 
-            this.btnDownloadPost.BackColor = System.Drawing.Color.LightGreen;
-            this.btnDownloadPost.Location = new System.Drawing.Point(793, 87);
-            this.btnDownloadPost.Name = "btnDownloadPost";
-            this.btnDownloadPost.Size = new System.Drawing.Size(25, 27);
-            this.btnDownloadPost.TabIndex = 19;
-            this.btnDownloadPost.Text = "↓";
-            this.toolTip.SetToolTip(this.btnDownloadPost, "データベースからリストをダウンロードします");
-            this.btnDownloadPost.UseVisualStyleBackColor = false;
-            // 
-            // btnUploadPost
-            // 
-            this.btnUploadPost.BackColor = System.Drawing.Color.Khaki;
-            this.btnUploadPost.Location = new System.Drawing.Point(762, 87);
-            this.btnUploadPost.Name = "btnUploadPost";
-            this.btnUploadPost.Size = new System.Drawing.Size(25, 27);
-            this.btnUploadPost.TabIndex = 18;
-            this.btnUploadPost.Text = "↑";
-            this.toolTip.SetToolTip(this.btnUploadPost, "データベースへリストをアップロードします");
-            this.btnUploadPost.UseVisualStyleBackColor = false;
-            // 
-            // btnDownloadArea
-            // 
-            this.btnDownloadArea.BackColor = System.Drawing.Color.LightGreen;
-            this.btnDownloadArea.Location = new System.Drawing.Point(364, 88);
-            this.btnDownloadArea.Name = "btnDownloadArea";
-            this.btnDownloadArea.Size = new System.Drawing.Size(25, 27);
-            this.btnDownloadArea.TabIndex = 17;
-            this.btnDownloadArea.Text = "↓";
-            this.toolTip.SetToolTip(this.btnDownloadArea, "データベースからリストをダウンロードします");
-            this.btnDownloadArea.UseVisualStyleBackColor = false;
-            // 
-            // btnUploadArea
-            // 
-            this.btnUploadArea.BackColor = System.Drawing.Color.Khaki;
-            this.btnUploadArea.Location = new System.Drawing.Point(333, 88);
-            this.btnUploadArea.Name = "btnUploadArea";
-            this.btnUploadArea.Size = new System.Drawing.Size(25, 27);
-            this.btnUploadArea.TabIndex = 16;
-            this.btnUploadArea.Text = "↑";
-            this.toolTip.SetToolTip(this.btnUploadArea, "データベースへリストをアップロードします");
-            this.btnUploadArea.UseVisualStyleBackColor = false;
             // 
             // txtReceptNum2
             // 
@@ -910,266 +858,6 @@
             this.lblDAYPDF.Text = "完了日時：";
             this.lblDAYPDF.DoubleClick += new System.EventHandler(this.OnLblDoubleclickMethod);
             // 
-            // tabDataBase
-            // 
-            this.tabDataBase.BackColor = System.Drawing.Color.Moccasin;
-            this.tabDataBase.Controls.Add(this.domainFilterID);
-            this.tabDataBase.Controls.Add(this.chkDomID);
-            this.tabDataBase.Controls.Add(this.chkFlgComp);
-            this.tabDataBase.Controls.Add(this.txtFilterInputs);
-            this.tabDataBase.Controls.Add(this.chkInputs);
-            this.tabDataBase.Controls.Add(this.chkCharger);
-            this.tabDataBase.Controls.Add(this.txtFilterCharger);
-            this.tabDataBase.Controls.Add(this.chkSymptom);
-            this.tabDataBase.Controls.Add(this.txtFilterSymptom);
-            this.tabDataBase.Controls.Add(this.chkSysname);
-            this.tabDataBase.Controls.Add(this.txtFilterSysname);
-            this.tabDataBase.Controls.Add(this.txtFilterPost);
-            this.tabDataBase.Controls.Add(this.chkPost);
-            this.tabDataBase.Controls.Add(this.chkArea);
-            this.tabDataBase.Controls.Add(this.txtFilterArea);
-            this.tabDataBase.Controls.Add(this.chkDate);
-            this.tabDataBase.Controls.Add(this.txtFilterDate);
-            this.tabDataBase.Controls.Add(this.btnQuery);
-            this.tabDataBase.Controls.Add(this.label16);
-            this.tabDataBase.Location = new System.Drawing.Point(4, 35);
-            this.tabDataBase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabDataBase.Name = "tabDataBase";
-            this.tabDataBase.Size = new System.Drawing.Size(933, 588);
-            this.tabDataBase.TabIndex = 3;
-            this.tabDataBase.Text = "データベース";
-            // 
-            // domainFilterID
-            // 
-            this.domainFilterID.Enabled = false;
-            this.domainFilterID.Location = new System.Drawing.Point(609, 60);
-            this.domainFilterID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.domainFilterID.Name = "domainFilterID";
-            this.domainFilterID.Size = new System.Drawing.Size(55, 30);
-            this.domainFilterID.TabIndex = 4;
-            this.domainFilterID.Text = "00";
-            // 
-            // chkDomID
-            // 
-            this.chkDomID.AutoSize = true;
-            this.chkDomID.Location = new System.Drawing.Point(474, 62);
-            this.chkDomID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkDomID.Name = "chkDomID";
-            this.chkDomID.Size = new System.Drawing.Size(46, 27);
-            this.chkDomID.TabIndex = 3;
-            this.chkDomID.Text = "ID";
-            this.chkDomID.UseVisualStyleBackColor = true;
-            this.chkDomID.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // chkFlgComp
-            // 
-            this.chkFlgComp.AutoSize = true;
-            this.chkFlgComp.Location = new System.Drawing.Point(474, 326);
-            this.chkFlgComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkFlgComp.Name = "chkFlgComp";
-            this.chkFlgComp.Size = new System.Drawing.Size(151, 27);
-            this.chkFlgComp.TabIndex = 15;
-            this.chkFlgComp.Text = "継続/完了 :[継続]";
-            this.chkFlgComp.UseVisualStyleBackColor = true;
-            this.chkFlgComp.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterInputs
-            // 
-            this.txtFilterInputs.Enabled = false;
-            this.txtFilterInputs.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterInputs.Location = new System.Drawing.Point(609, 236);
-            this.txtFilterInputs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterInputs.MaxLength = 128;
-            this.txtFilterInputs.Name = "txtFilterInputs";
-            this.txtFilterInputs.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterInputs.TabIndex = 12;
-            // 
-            // chkInputs
-            // 
-            this.chkInputs.AutoSize = true;
-            this.chkInputs.Location = new System.Drawing.Point(474, 238);
-            this.chkInputs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkInputs.Name = "chkInputs";
-            this.chkInputs.Size = new System.Drawing.Size(104, 27);
-            this.chkInputs.TabIndex = 11;
-            this.chkInputs.Text = "入力担当者";
-            this.chkInputs.UseVisualStyleBackColor = true;
-            this.chkInputs.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // chkCharger
-            // 
-            this.chkCharger.AutoSize = true;
-            this.chkCharger.Location = new System.Drawing.Point(37, 238);
-            this.chkCharger.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkCharger.Name = "chkCharger";
-            this.chkCharger.Size = new System.Drawing.Size(104, 27);
-            this.chkCharger.TabIndex = 9;
-            this.chkCharger.Text = "作業担当者";
-            this.chkCharger.UseVisualStyleBackColor = true;
-            this.chkCharger.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterCharger
-            // 
-            this.txtFilterCharger.Enabled = false;
-            this.txtFilterCharger.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterCharger.Location = new System.Drawing.Point(172, 236);
-            this.txtFilterCharger.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterCharger.MaxLength = 128;
-            this.txtFilterCharger.Name = "txtFilterCharger";
-            this.txtFilterCharger.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterCharger.TabIndex = 10;
-            // 
-            // chkSymptom
-            // 
-            this.chkSymptom.AutoSize = true;
-            this.chkSymptom.Location = new System.Drawing.Point(37, 414);
-            this.chkSymptom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkSymptom.Name = "chkSymptom";
-            this.chkSymptom.Size = new System.Drawing.Size(59, 27);
-            this.chkSymptom.TabIndex = 16;
-            this.chkSymptom.Text = "症状";
-            this.chkSymptom.UseVisualStyleBackColor = true;
-            this.chkSymptom.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterSymptom
-            // 
-            this.txtFilterSymptom.Enabled = false;
-            this.txtFilterSymptom.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterSymptom.Location = new System.Drawing.Point(172, 414);
-            this.txtFilterSymptom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterSymptom.MaxLength = 1024;
-            this.txtFilterSymptom.Multiline = true;
-            this.txtFilterSymptom.Name = "txtFilterSymptom";
-            this.txtFilterSymptom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtFilterSymptom.Size = new System.Drawing.Size(708, 88);
-            this.txtFilterSymptom.TabIndex = 17;
-            // 
-            // chkSysname
-            // 
-            this.chkSysname.AutoSize = true;
-            this.chkSysname.Location = new System.Drawing.Point(37, 326);
-            this.chkSysname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkSysname.Name = "chkSysname";
-            this.chkSysname.Size = new System.Drawing.Size(104, 27);
-            this.chkSysname.TabIndex = 13;
-            this.chkSysname.Text = "システム名";
-            this.chkSysname.UseVisualStyleBackColor = true;
-            this.chkSysname.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterSysname
-            // 
-            this.txtFilterSysname.Enabled = false;
-            this.txtFilterSysname.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterSysname.Location = new System.Drawing.Point(172, 324);
-            this.txtFilterSysname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterSysname.MaxLength = 128;
-            this.txtFilterSysname.Name = "txtFilterSysname";
-            this.txtFilterSysname.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterSysname.TabIndex = 14;
-            this.txtFilterSysname.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtFilterPost
-            // 
-            this.txtFilterPost.Enabled = false;
-            this.txtFilterPost.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterPost.Location = new System.Drawing.Point(609, 148);
-            this.txtFilterPost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterPost.MaxLength = 128;
-            this.txtFilterPost.Name = "txtFilterPost";
-            this.txtFilterPost.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterPost.TabIndex = 8;
-            // 
-            // chkPost
-            // 
-            this.chkPost.AutoSize = true;
-            this.chkPost.Location = new System.Drawing.Point(474, 150);
-            this.chkPost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkPost.Name = "chkPost";
-            this.chkPost.Size = new System.Drawing.Size(59, 27);
-            this.chkPost.TabIndex = 7;
-            this.chkPost.Text = "部署";
-            this.chkPost.UseVisualStyleBackColor = true;
-            this.chkPost.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // chkArea
-            // 
-            this.chkArea.AutoSize = true;
-            this.chkArea.Location = new System.Drawing.Point(37, 150);
-            this.chkArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkArea.Name = "chkArea";
-            this.chkArea.Size = new System.Drawing.Size(59, 27);
-            this.chkArea.TabIndex = 5;
-            this.chkArea.Text = "管轄";
-            this.chkArea.UseVisualStyleBackColor = true;
-            this.chkArea.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterArea
-            // 
-            this.txtFilterArea.Enabled = false;
-            this.txtFilterArea.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.txtFilterArea.Location = new System.Drawing.Point(172, 148);
-            this.txtFilterArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterArea.MaxLength = 128;
-            this.txtFilterArea.Name = "txtFilterArea";
-            this.txtFilterArea.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterArea.TabIndex = 6;
-            // 
-            // chkDate
-            // 
-            this.chkDate.AutoSize = true;
-            this.chkDate.Checked = true;
-            this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDate.Location = new System.Drawing.Point(37, 62);
-            this.chkDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(59, 27);
-            this.chkDate.TabIndex = 1;
-            this.chkDate.Text = "日付";
-            this.chkDate.UseVisualStyleBackColor = true;
-            this.chkDate.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
-            // 
-            // txtFilterDate
-            // 
-            this.txtFilterDate.AutoCompleteCustomSource.AddRange(new string[] {
-            "a",
-            "b",
-            "c",
-            "d",
-            "e"});
-            this.txtFilterDate.Location = new System.Drawing.Point(172, 60);
-            this.txtFilterDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterDate.MaxLength = 8;
-            this.txtFilterDate.Name = "txtFilterDate";
-            this.txtFilterDate.Size = new System.Drawing.Size(271, 30);
-            this.txtFilterDate.TabIndex = 2;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnQuery.BackColor = System.Drawing.Color.Wheat;
-            this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnQuery.Location = new System.Drawing.Point(313, 521);
-            this.btnQuery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(307, 53);
-            this.btnQuery.TabIndex = 18;
-            this.btnQuery.Text = "条件指定検索  [結果項目の削除・変更]";
-            this.btnQuery.UseVisualStyleBackColor = false;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.Wheat;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label16.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label16.Location = new System.Drawing.Point(0, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(933, 36);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "検索対象";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tabConfig
             // 
             this.tabConfig.BackColor = System.Drawing.Color.Beige;
@@ -1439,6 +1127,266 @@
             this.labelTextControl1.TabIndex = 0;
             this.labelTextControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
             // 
+            // tabDataBase
+            // 
+            this.tabDataBase.BackColor = System.Drawing.Color.Moccasin;
+            this.tabDataBase.Controls.Add(this.domainFilterID);
+            this.tabDataBase.Controls.Add(this.chkDomID);
+            this.tabDataBase.Controls.Add(this.chkFlgComp);
+            this.tabDataBase.Controls.Add(this.txtFilterInputs);
+            this.tabDataBase.Controls.Add(this.chkInputs);
+            this.tabDataBase.Controls.Add(this.chkCharger);
+            this.tabDataBase.Controls.Add(this.txtFilterCharger);
+            this.tabDataBase.Controls.Add(this.chkSymptom);
+            this.tabDataBase.Controls.Add(this.txtFilterSymptom);
+            this.tabDataBase.Controls.Add(this.chkSysname);
+            this.tabDataBase.Controls.Add(this.txtFilterSysname);
+            this.tabDataBase.Controls.Add(this.txtFilterPost);
+            this.tabDataBase.Controls.Add(this.chkPost);
+            this.tabDataBase.Controls.Add(this.chkArea);
+            this.tabDataBase.Controls.Add(this.txtFilterArea);
+            this.tabDataBase.Controls.Add(this.chkDate);
+            this.tabDataBase.Controls.Add(this.txtFilterDate);
+            this.tabDataBase.Controls.Add(this.btnQuery);
+            this.tabDataBase.Controls.Add(this.label16);
+            this.tabDataBase.Location = new System.Drawing.Point(4, 35);
+            this.tabDataBase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabDataBase.Name = "tabDataBase";
+            this.tabDataBase.Size = new System.Drawing.Size(933, 588);
+            this.tabDataBase.TabIndex = 3;
+            this.tabDataBase.Text = "データベース";
+            // 
+            // domainFilterID
+            // 
+            this.domainFilterID.Enabled = false;
+            this.domainFilterID.Location = new System.Drawing.Point(609, 60);
+            this.domainFilterID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.domainFilterID.Name = "domainFilterID";
+            this.domainFilterID.Size = new System.Drawing.Size(55, 30);
+            this.domainFilterID.TabIndex = 4;
+            this.domainFilterID.Text = "00";
+            // 
+            // chkDomID
+            // 
+            this.chkDomID.AutoSize = true;
+            this.chkDomID.Location = new System.Drawing.Point(474, 62);
+            this.chkDomID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkDomID.Name = "chkDomID";
+            this.chkDomID.Size = new System.Drawing.Size(46, 27);
+            this.chkDomID.TabIndex = 3;
+            this.chkDomID.Text = "ID";
+            this.chkDomID.UseVisualStyleBackColor = true;
+            this.chkDomID.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // chkFlgComp
+            // 
+            this.chkFlgComp.AutoSize = true;
+            this.chkFlgComp.Location = new System.Drawing.Point(474, 326);
+            this.chkFlgComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkFlgComp.Name = "chkFlgComp";
+            this.chkFlgComp.Size = new System.Drawing.Size(151, 27);
+            this.chkFlgComp.TabIndex = 15;
+            this.chkFlgComp.Text = "継続/完了 :[継続]";
+            this.chkFlgComp.UseVisualStyleBackColor = true;
+            this.chkFlgComp.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterInputs
+            // 
+            this.txtFilterInputs.Enabled = false;
+            this.txtFilterInputs.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterInputs.Location = new System.Drawing.Point(609, 236);
+            this.txtFilterInputs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterInputs.MaxLength = 128;
+            this.txtFilterInputs.Name = "txtFilterInputs";
+            this.txtFilterInputs.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterInputs.TabIndex = 12;
+            // 
+            // chkInputs
+            // 
+            this.chkInputs.AutoSize = true;
+            this.chkInputs.Location = new System.Drawing.Point(474, 238);
+            this.chkInputs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkInputs.Name = "chkInputs";
+            this.chkInputs.Size = new System.Drawing.Size(104, 27);
+            this.chkInputs.TabIndex = 11;
+            this.chkInputs.Text = "入力担当者";
+            this.chkInputs.UseVisualStyleBackColor = true;
+            this.chkInputs.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // chkCharger
+            // 
+            this.chkCharger.AutoSize = true;
+            this.chkCharger.Location = new System.Drawing.Point(37, 238);
+            this.chkCharger.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkCharger.Name = "chkCharger";
+            this.chkCharger.Size = new System.Drawing.Size(104, 27);
+            this.chkCharger.TabIndex = 9;
+            this.chkCharger.Text = "作業担当者";
+            this.chkCharger.UseVisualStyleBackColor = true;
+            this.chkCharger.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterCharger
+            // 
+            this.txtFilterCharger.Enabled = false;
+            this.txtFilterCharger.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterCharger.Location = new System.Drawing.Point(172, 236);
+            this.txtFilterCharger.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterCharger.MaxLength = 128;
+            this.txtFilterCharger.Name = "txtFilterCharger";
+            this.txtFilterCharger.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterCharger.TabIndex = 10;
+            // 
+            // chkSymptom
+            // 
+            this.chkSymptom.AutoSize = true;
+            this.chkSymptom.Location = new System.Drawing.Point(37, 414);
+            this.chkSymptom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkSymptom.Name = "chkSymptom";
+            this.chkSymptom.Size = new System.Drawing.Size(59, 27);
+            this.chkSymptom.TabIndex = 16;
+            this.chkSymptom.Text = "症状";
+            this.chkSymptom.UseVisualStyleBackColor = true;
+            this.chkSymptom.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterSymptom
+            // 
+            this.txtFilterSymptom.Enabled = false;
+            this.txtFilterSymptom.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterSymptom.Location = new System.Drawing.Point(172, 414);
+            this.txtFilterSymptom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterSymptom.MaxLength = 1024;
+            this.txtFilterSymptom.Multiline = true;
+            this.txtFilterSymptom.Name = "txtFilterSymptom";
+            this.txtFilterSymptom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtFilterSymptom.Size = new System.Drawing.Size(708, 88);
+            this.txtFilterSymptom.TabIndex = 17;
+            // 
+            // chkSysname
+            // 
+            this.chkSysname.AutoSize = true;
+            this.chkSysname.Location = new System.Drawing.Point(37, 326);
+            this.chkSysname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkSysname.Name = "chkSysname";
+            this.chkSysname.Size = new System.Drawing.Size(104, 27);
+            this.chkSysname.TabIndex = 13;
+            this.chkSysname.Text = "システム名";
+            this.chkSysname.UseVisualStyleBackColor = true;
+            this.chkSysname.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterSysname
+            // 
+            this.txtFilterSysname.Enabled = false;
+            this.txtFilterSysname.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterSysname.Location = new System.Drawing.Point(172, 324);
+            this.txtFilterSysname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterSysname.MaxLength = 128;
+            this.txtFilterSysname.Name = "txtFilterSysname";
+            this.txtFilterSysname.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterSysname.TabIndex = 14;
+            this.txtFilterSysname.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtFilterPost
+            // 
+            this.txtFilterPost.Enabled = false;
+            this.txtFilterPost.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterPost.Location = new System.Drawing.Point(609, 148);
+            this.txtFilterPost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterPost.MaxLength = 128;
+            this.txtFilterPost.Name = "txtFilterPost";
+            this.txtFilterPost.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterPost.TabIndex = 8;
+            // 
+            // chkPost
+            // 
+            this.chkPost.AutoSize = true;
+            this.chkPost.Location = new System.Drawing.Point(474, 150);
+            this.chkPost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkPost.Name = "chkPost";
+            this.chkPost.Size = new System.Drawing.Size(59, 27);
+            this.chkPost.TabIndex = 7;
+            this.chkPost.Text = "部署";
+            this.chkPost.UseVisualStyleBackColor = true;
+            this.chkPost.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // chkArea
+            // 
+            this.chkArea.AutoSize = true;
+            this.chkArea.Location = new System.Drawing.Point(37, 150);
+            this.chkArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkArea.Name = "chkArea";
+            this.chkArea.Size = new System.Drawing.Size(59, 27);
+            this.chkArea.TabIndex = 5;
+            this.chkArea.Text = "管轄";
+            this.chkArea.UseVisualStyleBackColor = true;
+            this.chkArea.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterArea
+            // 
+            this.txtFilterArea.Enabled = false;
+            this.txtFilterArea.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.txtFilterArea.Location = new System.Drawing.Point(172, 148);
+            this.txtFilterArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterArea.MaxLength = 128;
+            this.txtFilterArea.Name = "txtFilterArea";
+            this.txtFilterArea.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterArea.TabIndex = 6;
+            // 
+            // chkDate
+            // 
+            this.chkDate.AutoSize = true;
+            this.chkDate.Checked = true;
+            this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDate.Location = new System.Drawing.Point(37, 62);
+            this.chkDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkDate.Name = "chkDate";
+            this.chkDate.Size = new System.Drawing.Size(59, 27);
+            this.chkDate.TabIndex = 1;
+            this.chkDate.Text = "日付";
+            this.chkDate.UseVisualStyleBackColor = true;
+            this.chkDate.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // txtFilterDate
+            // 
+            this.txtFilterDate.AutoCompleteCustomSource.AddRange(new string[] {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e"});
+            this.txtFilterDate.Location = new System.Drawing.Point(172, 60);
+            this.txtFilterDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterDate.MaxLength = 8;
+            this.txtFilterDate.Name = "txtFilterDate";
+            this.txtFilterDate.Size = new System.Drawing.Size(271, 30);
+            this.txtFilterDate.TabIndex = 2;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnQuery.BackColor = System.Drawing.Color.Wheat;
+            this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnQuery.Location = new System.Drawing.Point(313, 521);
+            this.btnQuery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(307, 53);
+            this.btnQuery.TabIndex = 18;
+            this.btnQuery.Text = "条件指定検索  [結果項目の削除・変更]";
+            this.btnQuery.UseVisualStyleBackColor = false;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Wheat;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(933, 36);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "検索対象";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1510,12 +1458,12 @@
             this.tabProcInfo.PerformLayout();
             this.tabPdfInfo.ResumeLayout(false);
             this.tabPdfInfo.PerformLayout();
-            this.tabDataBase.ResumeLayout(false);
-            this.tabDataBase.PerformLayout();
             this.tabConfig.ResumeLayout(false);
             this.tabConfig.PerformLayout();
             this.tabTemplate.ResumeLayout(false);
             this.tabTemplate.PerformLayout();
+            this.tabDataBase.ResumeLayout(false);
+            this.tabDataBase.PerformLayout();
             this.pnlTop.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1635,10 +1583,6 @@
         private System.Windows.Forms.Button btnBrowseAccess;
         private System.Windows.Forms.TextBox txtAccessDbf;
         private System.Windows.Forms.Label lblAccLocation;
-        private System.Windows.Forms.Button btnDownloadPost;
-        private System.Windows.Forms.Button btnUploadPost;
-        private System.Windows.Forms.Button btnDownloadArea;
-        private System.Windows.Forms.Button btnUploadArea;
     }
 }
 
