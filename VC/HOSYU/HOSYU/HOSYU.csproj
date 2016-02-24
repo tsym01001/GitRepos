@@ -87,13 +87,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="check.rar" />
-    <None Include="Hidden.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="Hidden.Designer.cs">
-      <DependentUpon>Hidden.cs</DependentUpon>
-    </None>
+    <None Include="ClassDiagram1.cd" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,9 +108,6 @@
     <Compile Include="ConnectionInfo.Designer.cs">
       <DependentUpon>ConnectionInfo.cs</DependentUpon>
     </Compile>
-    <None Include="Hidden.resx">
-      <DependentUpon>Hidden.cs</DependentUpon>
-    </None>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +165,9 @@
     <None Include="Resources\KenkeiHosyu.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="check.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

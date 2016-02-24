@@ -42,9 +42,9 @@ namespace HOSYU
         private int[] DataRef = new int[] { 0, 3, 6, 9 };
         private string PdfFile;
         private StringList dbFields = new StringList();
-        private bool bCalledFlag = false;
         private AccessDB accDB= null;
-
+        private tabUI[] dbtabs;
+        private string txtOutDataUndoBuffer=string.Empty;
 
         /******************************************************
         *   受付番号、所轄、部署の情報表示。---------読み込み専用
@@ -84,8 +84,8 @@ namespace HOSYU
 
             txtReceptNum2.Items.AddRange(lstDomIDs);
             txtReceptNum2.Items.Reverse();
-            domainFilterID.Items.AddRange(lstDomIDs);
-            domainFilterID.Items.Reverse();
+            domainQryID.Items.AddRange(lstDomIDs);
+            domainQryID.Items.Reverse();
 
             lblTxtCtrls = new LabelTextControl[] {labelTextControl1,labelTextControl2,labelTextControl3,labelTextControl4,
                 labelTextControl5,labelTextControl6,labelTextControl7,labelTextControl8,
@@ -111,7 +111,12 @@ namespace HOSYU
                 pg.AutoScrollMinSize = tabsize;
             }
             prevTabIndex = -1;
-            bCalledFlag = false;
+
+            dbtabs = new tabUI[] {new tabUI(chkTab0_0,txt0_0,0,false),new tabUI(chkTab0_1,txt0_1,0,false),new tabUI(chkTab0_2,txt0_2,0,false),
+                    new tabUI(chkTab0_3,txt0_3,0,false),new tabUI(chkTab0_4,txt0_4,0,true),new tabUI(chkTab1_0,txt1_0,1,false),
+                    new tabUI(chkTab1_1,txt1_1,1,true),new tabUI(chkTab1_2,txt1_2,1,false),new tabUI(chkTab2_0,txt2_0,2,false),
+                    new tabUI(chkTab2_1,null,2,false),new tabUI(chkTab2_2,txt2_2,2,false),new tabUI(chkTab2_3,txt2_3,2,true),
+                    new tabUI(chkTab2_4,txt2_4,2,true),new tabUI(chkTab2_5,txt2_5,2,false) };
         }
 
 
@@ -180,7 +185,9 @@ namespace HOSYU
             tabControl1.SelectedIndex = 0;
             tabControl1_SelectedIndexChanged(null, null);
             txtReceptNum2.SelectedIndex = txtReceptNum2.Items.Count-1;
-            domainFilterID.SelectedIndex = domainFilterID.Items.Count - 1;
+            domainQryID.SelectedIndex = domainQryID.Items.Count - 1;
+
+            
 
         }
 
@@ -190,12 +197,13 @@ namespace HOSYU
         *******************************************************/
         private void btnCopy1_Click(object sender, EventArgs e)
         {
-            txtOutData.Text = string.Format("報告：■{0}　{1}:{2}　{3}（{4}）",
+            txtOutData.AppendText(string.Format("報告：■{0}　{1}:{2}　{3}（{4}）\r\n",
             txtDayProc.Text,
             txtTimeProc.Text,
             txtMinuteProc.Text,
             txtReport.Text,
-            txtInputsProc.Text);
+            txtInputsProc.Text));
+            tabControl1.SelectedIndex = 2;
         }
 
 
@@ -211,6 +219,7 @@ namespace HOSYU
                 strToken = " 継続";
 
             sList.Clear();
+            sList.AddRange(txtOutData.Lines);
             sList.Add(strAcceptInfoData);
             sList.Add("《保守サービス報告書》");
 
@@ -241,6 +250,7 @@ namespace HOSYU
             sList.Add("入力担当：" + txtInputsPdf.Text);
             sList.Add("--------------------------------------------------------\n");
             txtOutData.Lines = sList.ToArray();
+            tabControl1.SelectedIndex = 2;
         }
 
         /******************************************************
@@ -348,7 +358,7 @@ namespace HOSYU
             switch (tabControl1.SelectedIndex)
             {
                 case 0://受付入力---初期対応
-                    modAcceptDateTime = dateTimePicker1.Value;
+                    modCompleteDateTime = modContinuationDateTime = modProcDateTime = modAcceptDateTime = dateTimePicker1.Value;
                     txtRecvDay.Clear();
                     txtRecvDay.Text = modAcceptDateTime.ToString("yyyyMMdd");
                     txtReceptNum1.Clear();
@@ -376,9 +386,9 @@ namespace HOSYU
                     break;
                 case 4://Databaseメンテナンス
                     modAcceptDateTime = dateTimePicker1.Value;
-                    if (txtFilterDate.Enabled)
+                    if (txtQryAcceptID.Enabled)
                     {
-                        txtFilterDate.Text = modAcceptDateTime.ToString("yyyyMMdd");
+                        txtQryAcceptID.Text = modAcceptDateTime.ToString("yyyyMMdd");
                     }
                     btnQuery.Focus();
                     break;
@@ -407,105 +417,175 @@ namespace HOSYU
             MessageBox.Show(msg);
         }
 
-
+        private void CheckBehavior(CheckBox cb)
+        {
+            if (cb == null) return;
+            switch (cb.Name)
+            {
+                case "chkAccept":
+                    if (cb.Checked)
+                    {
+                        txtQryAcceptID.Enabled = true;
+                        domainQryID.Enabled = true;
+                    }
+                    else
+                    {
+                        txtQryAcceptID.Enabled = false;
+                        domainQryID.Enabled = false;
+                    }
+                    break;
+                case "chkTab0_0":
+                    if (cb.Checked)
+                    {
+                        txt0_0.Enabled = true;
+                    }
+                    else
+                    {
+                        txt0_0.Enabled = false;
+                    }
+                    break;
+                case "chkTab0_1":
+                    if (cb.Checked)
+                    {
+                        txt0_1.Enabled = true;
+                    }
+                    else
+                    {
+                        txt0_1.Enabled = false;
+                    }
+                    break;
+                case "chkTab0_2":
+                    if (cb.Checked)
+                    {
+                        txt0_2.Enabled = true;
+                    }
+                    else
+                    {
+                        txt0_2.Enabled = false;
+                    }
+                    break;
+                case "chkTab0_3":
+                    if (cb.Checked)
+                    {
+                        txt0_3.Enabled = true;
+                    }
+                    else
+                    {
+                        txt0_3.Enabled = false;
+                    }
+                    break;
+                case "chkTab0_4":
+                    if (cb.Checked)
+                    {
+                        txt0_4.Enabled = true;
+                    }
+                    else
+                    {
+                        txt0_4.Enabled = false;
+                    }
+                    break;
+                case "chkTab1_0":
+                    if (cb.Checked)
+                    {
+                        txt1_0.Enabled = true;
+                    }
+                    else
+                    {
+                        txt1_0.Enabled = false;
+                    }
+                    break;
+                case "chkTab1_1":
+                    if (cb.Checked)
+                    {
+                        txt1_1.Enabled = true;
+                    }
+                    else
+                    {
+                        txt1_1.Enabled = false;
+                    }
+                    break;
+                case "chkTab1_2":
+                    if (cb.Checked)
+                    {
+                        txt1_2.Enabled = true;
+                    }
+                    else
+                    {
+                        txt1_2.Enabled = false;
+                    }
+                    break;
+                case "chkTab2_0":
+                    if (cb.Checked)
+                    {
+                        txt2_0.Enabled = true;
+                    }
+                    else
+                    {
+                        txt2_0.Enabled = false;
+                    }
+                    break;
+                case "chkTab2_1":
+                    if (cb.Checked)
+                    {
+                        cb.Text = "継続/完了 :[完了]";
+                    }
+                    else
+                    {
+                        cb.Text = "継続/完了 :[継続]";
+                    }
+                    break;
+                case "chkTab2_2":
+                    if (cb.Checked)
+                    {
+                        txt2_2.Enabled = true;
+                    }
+                    else
+                    {
+                        txt2_2.Enabled = false;
+                    }
+                    break;
+                case "chkTab2_3":
+                    if (cb.Checked)
+                    {
+                        txt2_3.Enabled = true;
+                    }
+                    else
+                    {
+                        txt2_3.Enabled = false;
+                    }
+                    break;
+                case "chkTab2_4":
+                    if (cb.Checked)
+                    {
+                        txt2_4.Enabled = true;
+                    }
+                    else
+                    {
+                        txt2_4.Enabled = false;
+                    }
+                    break;
+                case "chkTab2_5":
+                    if (cb.Checked)
+                    {
+                        txt2_5.Enabled = true;
+                    }
+                    else
+                    {
+                        txt2_5.Enabled = false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
 
         /******************************************************
         *   データベース検索 -----　チェック項目変更時イベント
         *******************************************************/
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (sender is CheckBox)
-            {
-                CheckBox chkbx = (CheckBox)sender;
-                switch (chkbx.Name)
-                {
-                    case "chkDate"://日付
-                        txtFilterDate.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterDate.Focus();
-                            txtFilterDate.Select(0, 0);
-                        }
-                        break;
-                    case "chkDomID"://日付
-                        domainFilterID.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            if (txtFilterDate.Enabled == false)
-                            {
-                                txtFilterDate.Enabled = true;
-                            }
-                            chkDate.Text = "受付番号";
-                            chkDomID.Text = "";
-                            domainFilterID.Focus();
-                        }
-                        else
-                        {
-                            chkDate.Text = "日付";
-                            chkDomID.Text = "ID";
-　                      }
-                        break;
-                    case "chkFlgComp":// 継続・完了
-                        if (chkbx.Checked)
-                        {
-                            chkFlgComp.Text = "継続/完了 :[完了]";
-                        } else {
-                            chkFlgComp.Text = "継続/完了 :[継続]";
-                        }
-                        break;
-                    case "chkArea"://管轄
-                        txtFilterArea.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterArea.Focus();
-                            txtFilterArea.Select(0, 0);
-                        }
-                        break;
-                    case "chkPost"://部署
-                        txtFilterPost.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterPost.Focus();
-                            txtFilterPost.Select(0, 0);
-                        }
-                        break;
-                    case "chkCharger"://担当者
-                        txtFilterCharger.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterCharger.Focus();
-                            txtFilterCharger.Select(0, 0);
-                        }
-                        break;
-                    case "chkInputs"://入力担当者
-                        txtFilterInputs.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterInputs.Focus();
-                            txtFilterInputs.Select(0, 0);
-                        }
-                        break;
-                    case "chkSysname" ://システム名
-                        txtFilterSysname.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterSysname.Focus();
-                            txtFilterSysname.Select(0, 0);
-                        }
-                        break;
-                    case "chkSymptom"://症状
-                        txtFilterSymptom.Enabled = chkbx.Checked;
-                        if (chkbx.Checked)
-                        {
-                            txtFilterSymptom.Focus();
-                            txtFilterSymptom.Select(0, 0);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+            CheckBehavior(sender as CheckBox);
+        }   
 
 
         /******************************************************
@@ -529,25 +609,7 @@ namespace HOSYU
         }
 
 
-        /******************************************************
-        *   完了報告入力 ----- [継続・完了]チェック項目変更時イベント
-        *******************************************************/
-        private void chk_StateChanged(object sender, EventArgs e)
-        {
-            switch (chkComplete.CheckState)
-            {
-                case CheckState.Checked:
-                    chkComplete.Text = "完了";
-                    break;
-                case CheckState.Unchecked:
-                    chkComplete.Text = "継続";
-                    break;
-                case CheckState.Indeterminate:
-                    chkComplete.Text = "--";
-                    break;
-            }
-        }
-
+ 
 
 
         /******************************************************
@@ -939,36 +1001,34 @@ namespace HOSYU
         }
 
 
-        /******************************************************
-        *   リスト追加(空文字判定)
-        *******************************************************/
-        private string AddListIfNotNull(string strDBData)
-        {
-            string dbTrimData = strDBData.Trim();
-            if (dbTrimData == string.Empty)
-            {
-                throw new ValidateException();
-            }
-            dbFields.Add(dbTrimData);
-            return dbTrimData;
-        }
-
 
 
         /******************************************************
         *   データベース -----　チェック項目のチェック項目
         *******************************************************/
-        private bool DbCheckBoxCheck()
+        private bool DbCheckBoxCheck(int index)
         {
-            if (chkDate.Checked ||
-                chkFlgComp.Checked ||
-                chkArea.Checked ||
-                chkPost.Checked ||
-                chkCharger.Checked)
-            { 
-                return true;
+            bool resultValue = false;
+
+            if (chkAccept.Checked)
+            {
+                resultValue = true;
             }
-            return false;
+            else {
+                foreach (tabUI ui in dbtabs)
+                {
+                    if (ui.Index == index)
+                    {
+                        if (ui.ChkSwitch.Checked)
+                        {
+                            resultValue = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            return resultValue;
+
         }
 
 
@@ -977,58 +1037,39 @@ namespace HOSYU
         *******************************************************/
         private void DbItemCheckAndListBuffer()
         {
-            try
+            string strParamData = string.Empty;
+            dbFields.Clear();
+            if (chkAccept.Checked)
             {
-
-                if (chkDate.Checked)
+                strParamData = string.Format("{0}{1}",txtQryAcceptID.Text, domainQryID.Text);
+                if (strParamData != string.Empty)
                 {
-                    string strData = txtFilterDate.Text;
-                    strData = AddListIfNotNull(strData);
-                    if (chkDomID.Checked)
-                    {
-                        if (strData != string.Empty)
-                        {
-                            strData = strData + domainFilterID.Text.Trim();
-                        }
-                    }
-                }
-
-                if (chkArea.Checked)
-                {
-                    AddListIfNotNull(txtFilterArea.Text);
-                }
-
-                if (chkPost.Checked)
-                {
-                    AddListIfNotNull(txtFilterPost.Text);
-                }
-
-                if (chkCharger.Checked)
-                {
-                    AddListIfNotNull(txtFilterCharger.Text);
-                }
-
-                if (chkInputs.Checked)
-                {
-                    AddListIfNotNull(txtFilterInputs.Text);
-                }
-
-                if (chkSysname.Checked)
-                {
-                    AddListIfNotNull(txtFilterSysname.Text);
-                }
-
-                if (chkSymptom.Checked)
-                {
-                    AddListIfNotNull(txtFilterSymptom.Text);
+                    dbFields.Add(strParamData);
                 }
             }
-            catch (ValidateException)
+            foreach (tabUI ui in dbtabs)
             {
-                if (bCalledFlag == false)
+                if (ui.ChkSwitch.Checked)
                 {
-                    bCalledFlag = true;
-                    MessageBox.Show("文字列が空です");
+                    if (ui.TxtFilter == null)//完了
+                    {
+                        strParamData = "TRUE";
+                    }
+                    else
+                    {
+                        strParamData = ui.TxtFilter.Text.Trim();
+                    }
+                }
+                else
+                {
+                    if (ui.TxtFilter == null)//継続
+                    {
+                        strParamData = "FALSE";
+                    }
+                }
+                if (strParamData != string.Empty)
+                {
+                    dbFields.Add(strParamData);
                 }
             }
         }
@@ -1039,8 +1080,7 @@ namespace HOSYU
         *******************************************************/
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            bCalledFlag = false;
-            if ( DbCheckBoxCheck() )
+            if ( DbCheckBoxCheck(tabCtrlDBQuery.SelectedIndex) )
             {
                 DbItemCheckAndListBuffer();
                 if (dbFields.Count == 0)
@@ -1110,6 +1150,34 @@ namespace HOSYU
                 cif.Caller = this;
                 cif.InfoMessage = objTmp.DatabaseInfo.DBConnectionString;
                 cif.ShowDialog();
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTxtClear_Click(object sender, EventArgs e)
+        {
+            if (txtOutDataUndoBuffer == string.Empty)
+            {
+                if (txtOutData.Text != string.Empty)
+                {
+                    txtOutDataUndoBuffer = txtOutData.Text;
+                    txtOutData.Clear();
+                    btnUndo.Enabled = true;
+                }
+            }
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            if(txtOutDataUndoBuffer != string.Empty)
+            {
+                txtOutData.Text = txtOutDataUndoBuffer;
+                txtOutDataUndoBuffer = string.Empty;
+                btnUndo.Enabled = false;
             }
         }
     }
@@ -1395,6 +1463,46 @@ namespace HOSYU
             }
         }
 
+    }
+
+    public partial class tabUI  
+    {
+        private int propIndex;
+        private bool propIsPartial;
+        private CheckBox propChkSwitch;
+        private TextBox propTxtFilter;
+
+        public int Index
+        {
+            get{return this.propIndex;}
+            set{ this.propIndex = value; }
+        }
+
+        public bool IsPartial
+        {
+            get { return this.propIsPartial; }
+            set { this.propIsPartial = value; }
+        }
+
+        public CheckBox ChkSwitch
+        {
+            get { return this.propChkSwitch; }
+            set { this.propChkSwitch=value; }
+        }
+
+        public TextBox TxtFilter
+        {
+            get { return this.propTxtFilter; }
+            set { this.propTxtFilter=value; }
+        }
+
+        public tabUI(CheckBox chkValue,TextBox txtValue,int tabIndex=0,bool partialserch=false)
+        {
+            this.propChkSwitch = chkValue;
+            this.propTxtFilter = txtValue;
+            this.propIndex = tabIndex;
+            this.propIsPartial = partialserch;
+        }
     }
 
 

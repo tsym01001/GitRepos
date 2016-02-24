@@ -89,6 +89,41 @@ namespace HOSYU.Properties {
         }
         
         /// <summary>
+        ///   INSERT INTO ACCEPTTABLE ( ACCEPTID, AREADATA, POSTDATA, ACCEPTDAYTIME, SYSNAM, SYMPTOM )
+        ///SELECT &apos;{0}&apos; AS ACCEPTID, &apos;{1}&apos; AS AREADATA, &apos;{2}&apos; AS POSTDATA, &apos;{3}&apos; AS ACCEPTDAYTIME, &apos;{4}&apos; AS SYSNAM, &apos;{5}&apos; AS SYMPTOM
+        ///FROM ACCEPTTABLE, AREATABLE INNER JOIN POSTTABLE ON AREATABLE.AREAID = POSTTABLE.AREAID; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string InsertAcceptTbl {
+            get {
+                return ResourceManager.GetString("InsertAcceptTbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   INSERT INTO PDFTABLE ( ACCEPTID, PDFID, COMPDAYTIME, COMPFLUG, WORKER, CAUSE, DISPOSAL, INPUTS )
+        ///SELECT &apos;{0}&apos; AS ACCEPTID, &apos;{1}&apos; AS PDFID, &apos;{2}&apos; AS COMPDAYTIME, &apos;{3}&apos; AS COMPFLUG, &apos;{4}&apos; AS WORKER, &apos;{5}&apos; AS CAUSE, &apos;{6}&apos; AS DISPOSAL, &apos;{7}&apos; AS INPUTS
+        ///FROM INPUTSTABLE, WORKERTABLE, ACCEPTTABLE INNER JOIN PDFTABLE ON ACCEPTTABLE.ACCEPTID = PDFTABLE.ACCEPTID
+        ///WHERE (([ACCEPTTABLE].[ACCEPTID]=[PDFTABLE].[ACCEPTID])); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string InsertPdfTab {
+            get {
+                return ResourceManager.GetString("InsertPdfTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   INSERT INTO REPORTTABLE ( ACCEPTID, REPORTID, CONTACTDAYTIME, REPORTMSG, INPUTS )
+        ///SELECT &apos;{0}&apos; AS ACCEPTID, &apos;{1}&apos; AS REPORTID, &apos;{2}&apos; AS CONTACTDAYTIME, &apos;{3}&apos; AS REPORTMSG, &apos;{4}&apos; AS INPUTS
+        ///FROM REPORTTABLE
+        ///WHERE (([REPORTTABLE].[ACCEPTID]=[ACCEPTTABLE].[ACCEPTID])); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string InsertReportTab {
+            get {
+                return ResourceManager.GetString("InsertReportTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
         internal static byte[] KenkeiHosyu {
@@ -113,6 +148,49 @@ namespace HOSYU.Properties {
         internal static string resDomID {
             get {
                 return ResourceManager.GetString("resDomID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT ACCEPTTABLE.ACCEPTID, AREATABLE.AREADATA, POSTTABLE.POSTDATA, ACCEPTTABLE.ACCEPTDAYTIME, ACCEPTTABLE.SYSNAM, ACCEPTTABLE.SYMPTOM
+        ///FROM ACCEPTTABLE, AREATABLE INNER JOIN POSTTABLE ON AREATABLE.AREAID = POSTTABLE.AREAID
+        ///WHERE ((AREATABLE.AREAID=&apos;{0}&apos;) And (POSTTABLE.POSTID=&apos;{1}&apos;)); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SelectAcceptTab {
+            get {
+                return ResourceManager.GetString("SelectAcceptTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT PDFTABLE.ACCEPTID, PDFTABLE.PDFID, PDFTABLE.COMPDAYTIME, PDFTABLE.COMPFLUG, WORKERTABLE.WORKER, PDFTABLE.CAUSE, PDFTABLE.DISPOSAL, INPUTSTABLE.INPUTS
+        ///FROM PDFTABLE, WORKERTABLE, INPUTSTABLE
+        ///WHERE (([WORKERTABLE].[WORKERID]=&apos;{0}&apos;) AND ([INPUTSTABLE].[INPUTSID]=&apos;{1}&apos;)); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SelectPdfTab {
+            get {
+                return ResourceManager.GetString("SelectPdfTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT REPORTTABLE.ACCEPTID, REPORTTABLE.REPORTID, REPORTTABLE.CONTACTDAYTIME, REPORTTABLE.REPORTMSG, INPUTSTABLE.INPUTS
+        ///FROM REPORTTABLE, INPUTSTABLE
+        ///WHERE (([INPUTSTABLE].[INPUTSID]=&apos;{0}&apos;)); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SelectReportTab {
+            get {
+                return ResourceManager.GetString("SelectReportTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   UPDATE ACCEPTTABLE SET ACCEPTTABLE.AREADATA = &apos;{1}&apos;, ACCEPTTABLE.POSTDATA = &apos;{2}&apos;, ACCEPTTABLE.ACCEPTDAYTIME = &apos;{3}&apos;, ACCEPTTABLE.SYSNAM = &apos;{4}&apos;, ACCEPTTABLE.SYMPTOM = &apos;{5}&apos;
+        ///WHERE (((ACCEPTTABLE.ACCEPTID)=&apos;{0}&apos;)); に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string UpdateAcceptTab {
+            get {
+                return ResourceManager.GetString("UpdateAcceptTab", resourceCulture);
             }
         }
     }
